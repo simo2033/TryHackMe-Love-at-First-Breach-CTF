@@ -4,25 +4,29 @@
 
 Can you find vulnerabilities in this new dating app?
 
--img
+![Valenfind](Screen/firstimg.png)
 
 ## Solution
 
 First of all let's connect to the site
 
--1page
+![Valenfind](Screen/1page.png)
 
 start our jurney and we arrive in a register page
 
--register
+![Valenfind](Screen/Register.png)
+
+![Valenfind](Screen/ComplProfile.png)
 
 after submitting all the profile information we finally login in the site and we arrive in the dashboard
 
--dashboard
+![Valenfind](Screen/Dashboard.png)
 
 at this poi it took me a while exploring the source code of the site analyzing all the code in every page, it's a dating site and it display various users profile where we can send them likes.
 
-I found something interesting in the Cupid profile
+I found something interesting in the Cupid profile page
+
+![Valenfind](Screen/Cupid.png)
 
 ``` html
 <!DOCTYPE html>
@@ -137,7 +141,7 @@ This is the vulnerability we were searching, Local File Inclusion (LFI)
 
 let's try to read file /etc/passwd
 
--etcpsswd
+![Valenfind](Screen/etcpswdpng.png)
 
 IT WORKS!
 
@@ -145,9 +149,11 @@ So the LFI is confirmed!
 
 Now we have to read the app flask file of the server
 
+```html
 http://10.64.172.1:5000/api/fetch_layout?layout=../../app.py
+```
 
--appy
+![Valenfind](Screen/apppy.png)
 
 reviewing the source code we can find an ADMIN API KEY hardcoded
 
@@ -165,7 +171,7 @@ def export_db():
 
 So lets execute a curl request to get the DB, and than exploring whats inside we can find the flag
 
--flag
+![Valenfind](Screen/flag.png)
 
 
 

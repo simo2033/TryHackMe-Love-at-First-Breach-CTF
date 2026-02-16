@@ -147,6 +147,8 @@ IT WORKS!
 
 So the LFI is confirmed!
 
+Now the fact that the server use the port 5000 and the nmap revealed that the server is a Werzeug indicates that it's a Flask.
+
 Now we have to read the app flask file of the server
 
 ```html

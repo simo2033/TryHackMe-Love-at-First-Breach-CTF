@@ -1,4 +1,4 @@
-<img width="241" height="23" alt="image" src="https://github.com/user-attachments/assets/ffe7da3c-3111-4fd2-8618-70035873b366" />### Hidden Deep Into my Heart
+### Hidden Deep Into my Heart
 
 ## Description
 
